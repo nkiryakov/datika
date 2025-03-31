@@ -1,12 +1,27 @@
-import Image from "next/image"
+"use client"
+
 import Link from "next/link"
-import { ArrowRight, Zap } from "lucide-react"
+import {
+  ArrowRight,
+  TrendingUp,
+  Zap,
+  Database,
+  BarChartIcon as ChartBar,
+  BarChart,
+  PresentationIcon as PresentationChart,
+  Layers,
+  Target,
+  Lightbulb,
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { useLanguage } from "@/components/language-provider"
 
 export default function ServicesPage() {
+  const { t } = useLanguage()
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -16,69 +31,59 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
-                  Our{" "}
                   <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                    Services
+                    {t("services.pageTitle")}
                   </span>
                 </h1>
-                <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                  Comprehensive data analytics and digital advertising solutions tailored to your business needs.
-                </p>
+                <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.pageSubtitle")}</p>
               </div>
             </div>
           </div>
         </section>
         <section id="analytics" className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_300px] lg:gap-12 xl:grid-cols-[1fr_350px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    Data Analytics
+                    {t("footer.dataAnalytics")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    Turn Raw Data into Actionable Insights
+                    {t("services.analytics.title")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                    Our data analytics services help you understand your business performance, customer behavior, and
-                    market trends to make informed decisions.
-                  </p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.analytics.description")}</p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">Custom dashboard development</span>
+                    <span className="text-zinc-300">{t("services.analytics.bullet1")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">Predictive analytics and forecasting</span>
+                    <span className="text-zinc-300">{t("services.analytics.bullet2")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">Data integration and ETL processes</span>
+                    <span className="text-zinc-300">{t("services.analytics.bullet3")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">Machine learning model development</span>
+                    <span className="text-zinc-300">{t("services.analytics.bullet4")}</span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      Get Started
+                      {t("cta.getStarted")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative w-full h-[300px] md:h-[400px]">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600"
-                    alt="Data Analytics Dashboard"
-                    fill
-                    className="object-cover rounded-xl"
-                  />
+                <div className="flex items-center justify-center w-full h-[200px] md:h-[250px] bg-zinc-800/50 rounded-xl p-6">
+                  <Database className="w-16 h-16 text-purple-500 mr-4" />
+                  <ChartBar className="w-20 h-20 text-purple-400" />
                 </div>
               </div>
             </div>
@@ -86,52 +91,45 @@ export default function ServicesPage() {
         </section>
         <section id="marketing" className="w-full py-12 md:py-24 lg:py-32 bg-black">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[400px_1fr] lg:gap-12 xl:grid-cols-[600px_1fr]">
+            <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-12 xl:grid-cols-[350px_1fr]">
               <div className="flex items-center justify-center order-last lg:order-first">
-                <div className="relative w-full h-[300px] md:h-[400px]">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600"
-                    alt="Digital Advertising"
-                    fill
-                    className="object-cover rounded-xl"
-                  />
+                <div className="flex items-center justify-center w-full h-[200px] md:h-[250px] bg-zinc-800/50 rounded-xl p-6">
+                  <BarChart className="w-16 h-16 text-blue-500 mr-4" />
+                  <Target className="w-20 h-20 text-blue-400" />
                 </div>
               </div>
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    Digital Advertising
+                    {t("footer.digitalAdvertising")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    Data-Driven Campaigns That Convert
+                    {t("services.marketing.title")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                    Our digital advertising services leverage data analytics to create targeted campaigns that maximize
-                    ROI and drive conversions.
-                  </p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.marketing.description")}</p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">Paid search (PPC) management</span>
+                    <span className="text-zinc-300">{t("services.marketing.bullet1")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">Social media advertising</span>
+                    <span className="text-zinc-300">{t("services.marketing.bullet2")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">Programmatic display advertising</span>
+                    <span className="text-zinc-300">{t("services.marketing.bullet3")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">Conversion rate optimization</span>
+                    <span className="text-zinc-300">{t("services.marketing.bullet4")}</span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      Get Started
+                      {t("cta.getStarted")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -142,55 +140,48 @@ export default function ServicesPage() {
         </section>
         <section id="intelligence" className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_300px] lg:gap-12 xl:grid-cols-[1fr_350px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    Business Intelligence
+                    {t("footer.businessIntelligence")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    Visualize Your Data for Better Decisions
+                    {t("services.bi.title")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                    Our BI solutions provide interactive dashboards and reports that make complex data accessible and
-                    actionable for your entire organization.
-                  </p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.bi.description")}</p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">Interactive dashboard development</span>
+                    <span className="text-zinc-300">{t("services.bi.bullet1")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">Real-time data visualization</span>
+                    <span className="text-zinc-300">{t("services.bi.bullet2")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">Custom reporting solutions</span>
+                    <span className="text-zinc-300">{t("services.bi.bullet3")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">Data storytelling and presentation</span>
+                    <span className="text-zinc-300">{t("services.bi.bullet4")}</span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      Get Started
+                      {t("cta.getStarted")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative w-full h-[300px] md:h-[400px]">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600"
-                    alt="Business Intelligence Dashboard"
-                    fill
-                    className="object-cover rounded-xl"
-                  />
+                <div className="flex items-center justify-center w-full h-[200px] md:h-[250px] bg-zinc-800/50 rounded-xl p-6">
+                  <PresentationChart className="w-16 h-16 text-cyan-500 mr-4" />
+                  <Layers className="w-20 h-20 text-cyan-400" />
                 </div>
               </div>
             </div>
@@ -198,52 +189,45 @@ export default function ServicesPage() {
         </section>
         <section id="growth" className="w-full py-12 md:py-24 lg:py-32 bg-black">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[400px_1fr] lg:gap-12 xl:grid-cols-[600px_1fr]">
+            <div className="grid gap-6 lg:grid-cols-[300px_1fr] lg:gap-12 xl:grid-cols-[350px_1fr]">
               <div className="flex items-center justify-center order-last lg:order-first">
-                <div className="relative w-full h-[300px] md:h-[400px]">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600"
-                    alt="Growth Strategy"
-                    fill
-                    className="object-cover rounded-xl"
-                  />
+                <div className="flex items-center justify-center w-full h-[200px] md:h-[250px] bg-zinc-800/50 rounded-xl p-6">
+                  <TrendingUp className="w-16 h-16 text-green-500 mr-4" />
+                  <Lightbulb className="w-20 h-20 text-green-400" />
                 </div>
               </div>
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    Growth Strategy
+                    {t("footer.growthStrategy")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    Scale Your Business with Data-Backed Strategies
+                    {t("services.growth.title")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
-                    We help you identify growth opportunities and develop strategies that leverage your data assets to
-                    achieve sustainable business growth.
-                  </p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.growth.description")}</p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">Market opportunity analysis</span>
+                    <span className="text-zinc-300">{t("services.growth.bullet1")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">Customer segmentation and targeting</span>
+                    <span className="text-zinc-300">{t("services.growth.bullet2")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">Competitive intelligence</span>
+                    <span className="text-zinc-300">{t("services.growth.bullet3")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">Growth roadmap development</span>
+                    <span className="text-zinc-300">{t("services.growth.bullet4")}</span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      Get Started
+                      {t("cta.getStarted")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -257,16 +241,16 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                  Ready to Transform Your Data?
+                  {t("services.transform")}
                 </h2>
                 <p className="max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Contact us today to discuss how our services can help your business grow.
+                  {t("services.transformSubtitle")}
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/contact">
                   <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                    Contact Us
+                    {t("nav.contact")}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>

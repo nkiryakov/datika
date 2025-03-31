@@ -1,108 +1,86 @@
+"use client"
+
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
+import { LanguageToggle } from "@/components/language-toggle"
 
 export function SiteFooter() {
+  const { t } = useLanguage()
+
+  // Safe translation function with fallbacks
+  const safeT = (key: string, fallback: string): string => {
+    try {
+      const translation = t(key)
+      return translation === key ? fallback : translation
+    } catch (error) {
+      console.warn(`Translation error for key: ${key}`, error)
+      return fallback
+    }
+  }
+
   return (
     <footer className="w-full border-t border-zinc-800 bg-black py-12 md:py-16">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white">Datika</h3>
             <p className="text-sm text-zinc-400">
-              Transforming data into actionable insights for businesses of all sizes.
+              {safeT("footer.description", "Transforming data into actionable insights for businesses of all sizes.")}
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-zinc-400 hover:text-white">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-white">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-white">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-white">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
+            <div className="pt-2">
+              <LanguageToggle variant="minimal" />
             </div>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">Services</h3>
+            <h3 className="text-lg font-bold text-white">{safeT("footer.services", "Services")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/services#analytics" className="text-zinc-400 hover:text-white">
-                  Data Analytics
+                  {safeT("footer.dataAnalytics", "Data Analytics")}
                 </Link>
               </li>
               <li>
                 <Link href="/services#marketing" className="text-zinc-400 hover:text-white">
-                  Digital Advertising
+                  {safeT("footer.digitalAdvertising", "Digital Advertising")}
                 </Link>
               </li>
               <li>
                 <Link href="/services#intelligence" className="text-zinc-400 hover:text-white">
-                  Business Intelligence
+                  {safeT("footer.businessIntelligence", "Business Intelligence")}
                 </Link>
               </li>
               <li>
                 <Link href="/services#growth" className="text-zinc-400 hover:text-white">
-                  Growth Strategy
+                  {safeT("footer.growthStrategy", "Growth Strategy")}
                 </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">Company</h3>
+            <h3 className="text-lg font-bold text-white">{safeT("footer.company", "Company")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="text-zinc-400 hover:text-white">
-                  About Us
+                  {safeT("footer.aboutUs", "About Us")}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="text-zinc-400 hover:text-white">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="text-zinc-400 hover:text-white">
-                  Careers
+                  {safeT("footer.blog", "Blog")}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-zinc-400 hover:text-white">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white">Legal</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/privacy" className="text-zinc-400 hover:text-white">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-zinc-400 hover:text-white">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="/cookies" className="text-zinc-400 hover:text-white">
-                  Cookie Policy
+                  {safeT("footer.contact", "Contact")}
                 </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t border-zinc-800 pt-6 text-center text-sm text-zinc-500">
-          <p>&copy; {new Date().getFullYear()} Datika. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Datika. {safeT("footer.copyright", "All rights reserved.")}
+          </p>
         </div>
       </div>
     </footer>
