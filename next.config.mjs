@@ -46,3 +46,8 @@ function mergeConfig(nextConfig, userConfig) {
 }
 
 export default nextConfig
+module.exports = {
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+}
