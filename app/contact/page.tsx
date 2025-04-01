@@ -54,7 +54,8 @@ export default function ContactPage() {
                     <CardTitle>{t("contact.email")}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="font-medium">nikola.kiryakov@gmail.com</p>
+                    <a className="font-medium" href="mailto:info@datika.ca?subject=Service%20Request">info@datika.ca</a>
+
                   </CardContent>
                 </Card>
 
