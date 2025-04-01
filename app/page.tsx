@@ -1,5 +1,8 @@
 "use client"
 
+import type React from "react"
+
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { ArrowRight, BarChart2, LineChart, PieChart, TrendingUp } from "lucide-react"
 
@@ -7,12 +10,158 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { ParallaxBackground } from "@/components/parallax-background"
 import { CalendlyButton } from "@/components/calendly-button"
 import { useLanguage } from "@/components/language-provider"
 
 export default function Home() {
   const { t } = useLanguage()
+  const heroRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+  const animationFrameRef = useRef<number>()
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // Handle mouse movement for grid animation
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (heroRef.current) {
+      const rect = heroRef.current.getBoundingClientRect()
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+  }
+
+  // Canvas animation for grid deformation
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    // Set canvas dimensions
+    const resizeCanvas = () => {
+      if (heroRef.current && canvas) {
+        const rect = heroRef.current.getBoundingClientRect()
+        canvas.width = rect.width
+        canvas.height = rect.height
+      }
+    }
+
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    // Draw grid with deformation
+    const drawGrid = () => {
+      if (!ctx || !canvas) return
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Grid properties - more subtle
+      const gridSize = 20
+      const lineWidth = 0.8
+      const lineColor = "rgba(255, 255, 255, 0.15)"
+
+      // Deformation properties - more evenly distributed
+      const bulgeRadius = isHovering ? 350 : 0
+      const bulgeStrength = isHovering ? 20 : 0
+      const { x: mouseX, y: mouseY } = mousePosition
+
+      // Draw vertical lines with deformation
+      for (let x = 0; x <= canvas.width; x += gridSize) {
+        ctx.beginPath()
+        ctx.strokeStyle = lineColor
+        ctx.lineWidth = lineWidth
+
+        for (let y = 0; y <= canvas.height; y += 2) {
+          // Calculate distance from mouse
+          const dx = x - mouseX
+          const dy = y - mouseY
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          // Apply bulge effect with more even distribution
+          let bulgeX = x
+          if (distance < bulgeRadius) {
+            // More linear falloff with a minimum effect near the center
+            const falloff = Math.max(0.2, distance / bulgeRadius)
+            const deformation = (1 - falloff) * bulgeStrength
+
+            // Ensure we don't divide by zero
+            const distanceFactor = distance < 10 ? 10 : distance
+            bulgeX = x + (dx / distanceFactor) * deformation
+          }
+
+          if (y === 0) {
+            ctx.moveTo(bulgeX, y)
+          } else {
+            ctx.lineTo(bulgeX, y)
+          }
+        }
+
+        ctx.stroke()
+      }
+
+      // Draw horizontal lines with deformation
+      for (let y = 0; y <= canvas.height; y += gridSize) {
+        ctx.beginPath()
+        ctx.strokeStyle = lineColor
+        ctx.lineWidth = lineWidth
+
+        for (let x = 0; x <= canvas.width; x += 2) {
+          // Calculate distance from mouse
+          const dx = x - mouseX
+          const dy = y - mouseY
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          // Apply bulge effect with more even distribution
+          let bulgeY = y
+          if (distance < bulgeRadius) {
+            // More linear falloff with a minimum effect near the center
+            const falloff = Math.max(0.2, distance / bulgeRadius)
+            const deformation = (1 - falloff) * bulgeStrength
+
+            // Ensure we don't divide by zero
+            const distanceFactor = distance < 10 ? 10 : distance
+            bulgeY = y + (dy / distanceFactor) * deformation
+          }
+
+          if (x === 0) {
+            ctx.moveTo(x, bulgeY)
+          } else {
+            ctx.lineTo(x, bulgeY)
+          }
+        }
+
+        ctx.stroke()
+      }
+
+      animationFrameRef.current = requestAnimationFrame(drawGrid)
+    }
+
+    drawGrid()
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas)
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
+  }, [mousePosition, isHovering])
 
   // Safe translation function with fallbacks
   const safeT = (key: string, fallback: string): string => {
@@ -28,49 +177,42 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="flex-1 relative overflow-hidden">
-        <ParallaxBackground />
-        <section className="relative w-full py-16 md:py-24 lg:py-32 xl:py-40 bg-black">
+      <main className="flex-1">
+        <section
+          ref={heroRef}
+          className="relative w-full py-16 md:py-24 lg:py-32 xl:py-40 bg-black overflow-hidden"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.1),transparent_40%),radial-gradient(circle_at_70%_70%,rgba(147,51,234,0.1),transparent_40%)]"></div>
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: "url('/grid-pattern.svg')",
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
+
+          {/* Canvas for grid with deformation */}
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-25" />
+
           <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
               <div className="flex flex-col justify-center space-y-10">
-                <div className="space-y-6 relative">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/tight bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent leading-[1.2] pb-1 animate-fade-in-up">
+                <div className="space-y-6">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight pb-1">
                     {safeT("hero.title", "Transform Your Data into Actionable Insights")}
                   </h1>
-                  <p
-                    className="max-w-[600px] text-zinc-400 md:text-xl pt-4 animate-fade-in-up"
-                    style={{ animationDelay: "300ms" }}
-                  >
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl pt-4">
                     {safeT(
                       "hero.subtitle",
                       "Datika helps businesses harness the power of data analytics and digital advertising to drive growth and make informed decisions.",
                     )}
                   </p>
                 </div>
-                <div
-                  className="flex flex-col gap-2 min-[400px]:flex-row justify-center animate-fade-in-up"
-                  style={{ animationDelay: "600ms" }}
-                >
+                <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
                   <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 transition-all duration-300 hover:scale-105">
+                    <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
                       {safeT("cta.getStarted", "Get Started")}
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                   <Link href="/services">
-                    <Button
-                      variant="outline"
-                      className="border-zinc-700 text-white hover:bg-zinc-800 transition-all duration-300 hover:scale-105"
-                    >
+                    <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800">
                       {safeT("cta.exploreServices", "Explore Services")}
                     </Button>
                   </Link>
@@ -79,7 +221,19 @@ export default function Home() {
             </div>
           </div>
         </section>
+
         <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 relative">
+          {/* Extended grid pattern from hero section - subtle extension */}
+          <div
+            className="absolute top-0 left-0 right-0 h-32 opacity-10"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+              maskImage: "linear-gradient(to bottom, black, transparent)",
+            }}
+          ></div>
+
           <div
             className="absolute inset-0 opacity-5"
             style={{

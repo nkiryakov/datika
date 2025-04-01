@@ -1,6 +1,7 @@
 "use client"
 
-import { Mail, MapPin, Phone } from "lucide-react"
+import { useEffect } from "react"
+import { Mail, Phone } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
@@ -9,6 +10,11 @@ import { useLanguage } from "@/components/language-provider"
 
 export default function ContactPage() {
   const { t } = useLanguage()
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -41,7 +47,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
                 <Card className="bg-zinc-800 border-zinc-700 text-white">
                   <CardHeader className="flex flex-row items-center gap-4 pb-2">
                     <Mail className="h-8 w-8 text-purple-500" />
@@ -61,27 +67,14 @@ export default function ContactPage() {
                     <p className="font-medium">514-746-1558</p>
                   </CardContent>
                 </Card>
-
-                <Card className="bg-zinc-800 border-zinc-700 text-white">
-                  <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                    <MapPin className="h-8 w-8 text-cyan-500" />
-                    <CardTitle>{t("contact.location")}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="font-medium">17 de la poudriere, Montreal, Quebec, Canada</p>
-                    <p className="text-sm text-zinc-400 mt-2">{t("contact.hours")}</p>
-                  </CardContent>
-                </Card>
               </div>
 
               <div className="mt-12 flex flex-col items-center justify-center space-y-6 text-center">
                 <div className="space-y-3">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">
-                    {t("contact.schedule")}
-                  </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl mx-auto">{t("contact.scheduleSubtitle")}</p>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">{t("cta.ready")}</h2>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl mx-auto">{t("cta.readySubtitle")}</p>
                 </div>
-                <CalendlyButton text={t("contact.meeting")} />
+                <CalendlyButton text={t("cta.schedule")} />
               </div>
             </div>
           </div>

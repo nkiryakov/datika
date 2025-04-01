@@ -79,7 +79,7 @@ const translations = {
     "contact.meeting": "Schedule a Meeting",
 
     // Services
-    "services.pageTitle": "Our Services",
+    "services.pageTitle": "Our",
     "services.pageSubtitle":
       "Comprehensive data analytics and digital advertising solutions tailored to your business needs.",
     "services.analytics.title": "Turn Raw Data into Actionable Insights",
@@ -97,109 +97,106 @@ const translations = {
     "services.transform": "Ready to Transform Your Data?",
     "services.transformSubtitle": "Contact us today to discuss how our services can help your business grow.",
 
+    // Services bullet points
+    "services.analytics.point1": "Custom dashboard development",
+    "services.analytics.point2": "Predictive analytics and forecasting",
+    "services.analytics.point3": "Data integration and ETL processes",
+    "services.marketing.point1": "Paid search (PPC) management",
+    "services.marketing.point2": "Social media advertising",
+    "services.marketing.point3": "Programmatic display advertising",
+    "services.marketing.point4": "Conversion rate optimization",
+    "services.bi.point1": "Interactive dashboard development",
+    "services.bi.point2": "Real-time data visualization",
+    "services.bi.point3": "Custom reporting solutions",
+    "services.bi.point4": "Data storytelling and presentation",
+    "services.growth.point1": "Market opportunity analysis",
+    "services.growth.point2": "Customer segmentation and targeting",
+    "services.growth.point3": "Competitive intelligence",
+    "services.growth.point4": "Growth roadmap development",
+
     // About page
     "about.title": "About",
     "about.subtitle":
       "We're a team of data scientists, analysts, and digital marketers passionate about turning data into growth opportunities.",
-    "about.storyTitle": "Our Story",
-    "about.storyDescription":
-      "Founded in 2018, Datika was born from a simple idea: data should be accessible, understandable, and actionable for businesses of all sizes.",
-    "about.missionTitle": "Our Mission",
-    "about.missionDescription":
+    "about.story.title": "Our Story",
+    "about.story.description":
+      "Founded in 2025, Datika was born from a simple idea: data should be accessible, understandable, and actionable for businesses of all sizes.",
+    "about.mission.title": "Our Mission",
+    "about.mission.description":
       "To empower businesses with data-driven insights that drive growth, innovation, and competitive advantage in an increasingly digital world.",
-    "about.visionTitle": "Our Vision",
-    "about.visionDescription":
+    "about.vision.title": "Our Vision",
+    "about.vision.description":
       "To be the leading provider of integrated data analytics and digital advertising solutions, known for our expertise, innovation, and measurable results.",
-    "about.valuesTitle": "Our Values",
-    "about.valuesDescription": "The principles that guide our work and relationships with clients.",
-    "about.value1Title": "Data Integrity",
-    "about.value1Description":
+    "about.values.title": "Our Values",
+    "about.values.subtitle": "The principles that guide our work and relationships with clients.",
+    "about.value.integrity.title": "Data Integrity",
+    "about.value.integrity.description":
       "We believe in the accuracy, consistency, and reliability of data as the foundation of all our work.",
-    "about.value2Title": "Client Partnership",
-    "about.value2Description": "We work as an extension of your team, aligning our expertise with your business goals.",
-    "about.value3Title": "Excellence",
-    "about.value3Description":
+    "about.value.partnership.title": "Client Partnership",
+    "about.value.partnership.description":
+      "We work as an extension of your team, aligning our expertise with your business goals.",
+    "about.value.excellence.title": "Excellence",
+    "about.value.excellence.description":
       "We strive for excellence in everything we do, from analysis to implementation to client service.",
-    "about.value4Title": "Innovation",
-    "about.value4Description":
+    "about.value.innovation.title": "Innovation",
+    "about.value.innovation.description":
       "We continuously explore new technologies and methodologies to deliver cutting-edge solutions.",
 
-    // Services - Bullets
-    "services.analytics.bullet1": "Custom dashboard development",
-    "services.analytics.bullet2": "Predictive analytics and forecasting",
-    "services.analytics.bullet3": "Data integration and ETL processes",
-    "services.analytics.bullet4": "Machine learning model development",
-    "services.marketing.bullet1": "Paid search (PPC) management",
-    "services.marketing.bullet2": "Social media advertising",
-    "services.marketing.bullet3": "Programmatic display advertising",
-    "services.marketing.bullet4": "Conversion rate optimization",
-    "services.bi.bullet1": "Interactive dashboard development",
-    "services.bi.bullet2": "Real-time data visualization",
-    "services.bi.bullet3": "Custom reporting solutions",
-    "services.bi.bullet4": "Data storytelling and presentation",
-    "services.growth.bullet1": "Market opportunity analysis",
-    "services.growth.bullet2": "Customer segmentation and targeting",
-    "services.growth.bullet3": "Competitive intelligence",
-    "services.growth.bullet4": "Growth roadmap development",
-
-    // Blog
+    // Blog page
     "blog.title": "Blog",
     "blog.subtitle": "Insights, trends, and best practices in data analytics and digital advertising.",
     "blog.readMore": "Read More",
-    "blog.category": "Category",
-    "blog.date": "Date",
-    "blog.author": "Author",
   },
   fr: {
     // Header
     "nav.home": "Accueil",
     "nav.about": "À propos",
     "nav.services": "Services",
-    "nav.blog": "Blog",
+    "nav.blog": "Blogue",
     "nav.contact": "Contactez-nous",
     "nav.language": "English",
 
     // Homepage
-    "hero.title": "Transformez vos données en insights exploitables",
+    "hero.title": "Transformez Vos Données et Prenez Action",
     "hero.subtitle":
-      "Datika aide les entreprises à exploiter la puissance de l'analyse de données et de la publicité numérique pour stimuler la croissance et prendre des décisions éclairées.",
+      "Datika aide les entreprises à exploiter la puissance de l'analyse de données et de la publicité numérique pour stimuler leur croissance et prendre des décisions éclairées.",
     "cta.getStarted": "Commencer",
-    "cta.exploreServices": "Explorer les services",
-    "services.title": "Solutions basées sur les données",
+    "cta.exploreServices": "Découvrir les Services",
+    "services.title": "Des solutions basées sur les données pour une prise de décision plus intelligente",
     "services.subtitle":
-      "Nous offrons des services complets d'analyse et de publicité pour aider votre entreprise à prospérer dans le paysage numérique.",
-    "service.dataAnalytics.title": "Analyse de données",
-    "service.dataAnalytics.subtitle": "Transformez vos données brutes en insights significatifs",
+      "Des analyses avancées, une publicité performante et une stratégie optimisée pour maximiser votre impact.",
+    "service.dataAnalytics.title": "Analyse de Données",
+    "service.dataAnalytics.subtitle": "Transformez vos données en insights clairs et exploitables",
     "service.dataAnalytics.description":
-      "Nos solutions d'analyse avancées vous aident à comprendre le comportement des clients, les tendances du marché et la performance de l'entreprise pour prendre des décisions basées sur les données.",
-    "service.marketing.title": "Marketing de performance",
-    "service.marketing.subtitle": "Maximisez votre ROI avec des campagnes basées sur les données",
+      "Transformez vos données en insights clairs et exploitables grâce à nos outils d'analyse avancés.",
+    "service.marketing.title": "Marketing de Performance",
+    "service.marketing.subtitle": "Optimisez vos campagnes publicitaires",
     "service.marketing.description":
-      "Nos stratégies de marketing de performance sont conçues pour optimiser vos dépenses publicitaires et offrir des résultats mesurables sur tous les canaux numériques.",
-    "service.bi.title": "Business Intelligence",
+      "Optimisez vos campagnes publicitaires et maximisez votre retour sur investissement avec des stratégies basées sur les données.",
+    "service.bi.title": "Intelligence d'Affaires",
     "service.bi.subtitle": "Visualisez vos données pour une meilleure prise de décision",
     "service.bi.description":
-      "Nos solutions de BI fournissent des tableaux de bord interactifs et des rapports qui rendent les données complexes accessibles et exploitables pour toute votre organisation.",
-    "service.growth.title": "Stratégie de croissance",
+      "Accédez à des tableaux de bord interactifs et des rapports détaillés pour mieux comprendre votre entreprise.",
+    "service.growth.title": "Stratégie de Croissance",
     "service.growth.subtitle": "Développez votre entreprise avec des stratégies basées sur les données",
     "service.growth.description":
-      "Nous vous aidons à identifier les opportunités de croissance et à développer des stratégies qui exploitent vos actifs de données pour atteindre une croissance durable.",
+      "Développez votre entreprise en tirant parti d'une approche axée sur les données et l'innovation.",
     "cta.learnMore": "En savoir plus",
-    "cta.ready": "Prêt à commencer votre parcours de données?",
+    "cta.ready": "Prêt à Exploiter le Pouvoir de Vos Données ?",
     "cta.readySubtitle":
-      "Planifiez une consultation gratuite pour discuter de la façon dont nos services d'analyse de données peuvent aider votre entreprise à se développer.",
-    "cta.schedule": "Planifier une consultation",
+      "Contactez-nous dès aujourd'hui pour découvrir comment nous pouvons transformer vos données en opportunités de croissance.",
+    "cta.schedule": "Planifier une Consultation",
 
     // Footer
-    "footer.description": "Transformer les données en insights exploitables pour les entreprises de toutes tailles.",
+    "footer.description": "Transformer les données en information exploitable pour les entreprises de toutes tailles.",
     "footer.services": "Services",
     "footer.dataAnalytics": "Analyse de données",
     "footer.digitalAdvertising": "Publicité numérique",
-    "footer.businessIntelligence": "Business Intelligence",
+    "footer.businessIntelligence": "Intelligence d'Affaires",
     "footer.growthStrategy": "Stratégie de croissance",
     "footer.company": "Entreprise",
     "footer.aboutUs": "À propos de nous",
-    "footer.blog": "Blog",
+    "footer.blog": "Blogue",
     "footer.contact": "Contact",
     "footer.copyright": "Tous droits réservés.",
 
@@ -208,7 +205,7 @@ const translations = {
     "contact.subtitle":
       "Vous avez une question ou êtes prêt à commencer votre parcours de données? Nous sommes là pour vous aider.",
     "contact.info": "Informations de contact",
-    "contact.infoSubtitle": "Contactez-nous par l'un de ces canaux ou planifiez une réunion.",
+    "contact.infoSubtitle": "Contactez-nous ou planifiez une réunion.",
     "contact.email": "Email",
     "contact.phone": "Téléphone",
     "contact.location": "Emplacement",
@@ -219,78 +216,71 @@ const translations = {
     "contact.meeting": "Planifier une réunion",
 
     // Services
-    "services.pageTitle": "Nos Services",
-    "services.pageSubtitle":
-      "Solutions complètes d'analyse de données et de publicité numérique adaptées aux besoins de votre entreprise.",
-    "services.analytics.title": "Transformez les données brutes en insights exploitables",
+    "services.pageTitle": "Nos",
+    "services.pageSubtitle": "Solutions Basées sur les Données",
+    "services.analytics.title": "Transformez vos données en informations exploitables",
     "services.analytics.description":
-      "Nos services d'analyse de données vous aident à comprendre la performance de votre entreprise, le comportement des clients et les tendances du marché pour prendre des décisions éclairées.",
-    "services.marketing.title": "Des campagnes basées sur les données qui convertissent",
+      "Nos solutions analytiques avancées vous aident à comprendre le comportement des clients, les tendances du marché et la performance de l'entreprise pour prendre des décisions éclairées.",
+    "services.analytics.point1": "Collecte et traitement des données",
+    "services.analytics.point2": "Analyse prédictive et modélisation",
+    "services.analytics.point3": "Tableaux de bord interactifs",
+    "services.marketing.title": "Maximisez votre retour sur investissement avec des campagnes basées sur les données",
     "services.marketing.description":
-      "Nos services de publicité numérique utilisent l'analyse de données pour créer des campagnes ciblées qui maximisent le ROI et génèrent des conversions.",
-    "services.bi.title": "Visualisez vos données pour de meilleures décisions",
+      "Nos stratégies de marketing de performance sont conçues pour optimiser vos dépenses publicitaires et fournir des résultats mesurables sur tous les canaux numériques.",
+    "services.marketing.point1": "Publicité ciblée (Google Ads, Social Ads)",
+    "services.marketing.point2": "Optimisation du taux de conversion",
+    "services.marketing.point3": "Analyse des performances des campagnes",
+    "services.marketing.point4": "Stratégies de remarketing personnalisées",
+    "services.bi.title": "Visualisez vos données pour une meilleure prise de décision",
     "services.bi.description":
-      "Nos solutions de BI fournissent des tableaux de bord interactifs et des rapports qui rendent les données complexes accessibles et exploitables pour toute votre organisation.",
+      "Nos solutions BI fournissent des tableaux de bord et des rapports interactifs qui rendent les données complexes accessibles et exploitables pour l'ensemble de votre organisation.",
+    "services.bi.point1": "Création de tableaux de bord sur mesure",
+    "services.bi.point2": "Analyse des KPI et reporting automatisé",
+    "services.bi.point3": "Stratégies de croissance basées sur les données",
+    "services.bi.point4": "Visualisation de données interactives",
     "services.growth.title": "Développez votre entreprise avec des stratégies basées sur les données",
     "services.growth.description":
       "Nous vous aidons à identifier les opportunités de croissance et à développer des stratégies qui exploitent vos actifs de données pour atteindre une croissance durable.",
-    "services.transform": "Prêt à transformer vos données?",
+    "services.growth.point1": "Analyse des opportunités de marché",
+    "services.growth.point2": "Segmentation et ciblage de clientèle",
+    "services.growth.point3": "Intelligence concurrentielle",
+    "services.growth.point4": "Développement de feuilles de route stratégiques",
+    "services.transform": "Prêt à Exploiter le Pouvoir de Vos Données ?",
     "services.transformSubtitle":
-      "Contactez-nous aujourd'hui pour discuter de la façon dont nos services peuvent aider votre entreprise à se développer.",
+      "Contactez-nous dès aujourd'hui pour découvrir comment nous pouvons transformer vos données en opportunités de croissance.",
 
     // About page
-    "about.title": "À propos",
-    "about.subtitle":
-      "Nous sommes une équipe de data scientists, d'analystes et de spécialistes du marketing numérique passionnés par la transformation des données en opportunités de croissance.",
-    "about.storyTitle": "Notre Histoire",
-    "about.storyDescription":
-      "Fondée en 2018, Datika est née d'une idée simple : les données doivent être accessibles, compréhensibles et exploitables pour les entreprises de toutes tailles.",
-    "about.missionTitle": "Notre Mission",
-    "about.missionDescription":
-      "Permettre aux entreprises d'exploiter des insights basés sur les données qui favorisent la croissance, l'innovation et l'avantage concurrentiel dans un monde de plus en plus numérique.",
-    "about.visionTitle": "Notre Vision",
-    "about.visionDescription":
-      "Devenir le principal fournisseur de solutions intégrées d'analyse de données et de publicité numérique, reconnu pour notre expertise, notre innovation et nos résultats mesurables.",
-    "about.valuesTitle": "Nos Valeurs",
-    "about.valuesDescription": "Les principes qui guident notre travail et nos relations avec les clients.",
-    "about.value1Title": "Intégrité des Données",
-    "about.value1Description":
-      "Nous croyons en l'exactitude, la cohérence et la fiabilité des données comme fondement de tout notre travail.",
-    "about.value2Title": "Partenariat Client",
-    "about.value2Description":
+    "about.title": "À Propos de",
+    "about.subtitle": "Nous Transformons les Données en Opportunités",
+    "about.story.title": "Qui Sommes-Nous ?",
+    "about.story.description":
+      "Nous sommes une équipe passionnée d'experts en données et en marketing numérique, dédiée à transformer des informations complexes en stratégies exploitables.",
+    "about.mission.title": "Notre Mission",
+    "about.mission.description":
+      "Aider les entreprises à prendre des décisions éclairées grâce à des analyses précises et des stratégies optimisées.",
+    "about.vision.title": "Notre Approche",
+    "about.vision.description":
+      "Associer expertise analytique, technologie avancée et innovation pour maximiser la valeur de vos données.",
+    "about.values.title": "Pourquoi Datika ?",
+    "about.values.subtitle":
+      "Les raisons de faire appel à nous pour vos besoins en analyse de données et marketing numérique.",
+    "about.value.integrity.title": "Intégrité des Données",
+    "about.value.integrity.description":
+      "Nous croyons que l'exactitude, la cohérence et la fiabilité de nos analyses sont au coeur de notre mission.",
+    "about.value.partnership.title": "Partenariat Client",
+    "about.value.partnership.description":
       "Nous travaillons comme une extension de votre équipe, alignant notre expertise sur vos objectifs commerciaux.",
-    "about.value3Title": "Excellence",
-    "about.value3Description":
+    "about.value.excellence.title": "Excellence",
+    "about.value.excellence.description":
       "Nous visons l'excellence dans tout ce que nous faisons, de l'analyse à la mise en œuvre en passant par le service client.",
-    "about.value4Title": "Innovation",
-    "about.value4Description":
+    "about.value.innovation.title": "Innovation",
+    "about.value.innovation.description":
       "Nous explorons continuellement de nouvelles technologies et méthodologies pour fournir des solutions de pointe.",
 
-    // Services - Bullets
-    "services.analytics.bullet1": "Développement de tableaux de bord personnalisés",
-    "services.analytics.bullet2": "Analyses prédictives et prévisions",
-    "services.analytics.bullet3": "Intégration de données et processus ETL",
-    "services.analytics.bullet4": "Développement de modèles d'apprentissage automatique",
-    "services.marketing.bullet1": "Gestion des annonces payantes (PPC)",
-    "services.marketing.bullet2": "Publicité sur les réseaux sociaux",
-    "services.marketing.bullet3": "Publicité programmatique",
-    "services.marketing.bullet4": "Optimisation du taux de conversion",
-    "services.bi.bullet1": "Développement de tableaux de bord interactifs",
-    "services.bi.bullet2": "Visualisation des données en temps réel",
-    "services.bi.bullet3": "Solutions de rapports personnalisés",
-    "services.bi.bullet4": "Narration et présentation des données",
-    "services.growth.bullet1": "Analyse des opportunités de marché",
-    "services.growth.bullet2": "Segmentation et ciblage des clients",
-    "services.growth.bullet3": "Intelligence concurrentielle",
-    "services.growth.bullet4": "Développement de feuilles de route de croissance",
-
-    // Blog
-    "blog.title": "Blog",
-    "blog.subtitle": "Perspectives, tendances et meilleures pratiques en analyse de données et publicité numérique.",
+    // Blog page
+    "blog.title": "Blogue",
+    "blog.subtitle": "Astuces, tendences et meilleures pratiques en analyse de données et publicité numérique.",
     "blog.readMore": "Lire Plus",
-    "blog.category": "Catégorie",
-    "blog.date": "Date",
-    "blog.author": "Auteur",
   },
 }
 

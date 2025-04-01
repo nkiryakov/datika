@@ -4,169 +4,112 @@ import { useEffect, useState, useRef } from "react"
 
 export function ParallaxBackground() {
   const [scrollY, setScrollY] = useState(0)
-  const animationRef = useRef<number | null>(null)
+  const requestRef = useRef<number>()
+  const previousTimeRef = useRef<number>()
 
-  // Handle scroll events
-  const handleScroll = () => {
-    setScrollY(window.scrollY)
+  const animate = (time: number) => {
+    if (previousTimeRef.current !== undefined) {
+      setScrollY(window.scrollY)
+    }
+    previousTimeRef.current = time
+    requestRef.current = requestAnimationFrame(animate)
   }
 
-  // Setup scroll listener with requestAnimationFrame for performance
   useEffect(() => {
-    // Initial setup
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
+    requestRef.current = requestAnimationFrame(animate)
     return () => {
-      // Cleanup
-      window.removeEventListener("scroll", handleScroll)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+      if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current)
       }
     }
   }, [])
 
-  // Calculate dynamic grid size based on scroll position
-  const gridSize = Math.max(20, 30 - scrollY * 0.01) // Grid gets smaller as you scroll (min size 20px)
-
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
-      {/* Main grid background - changes size based on scroll */}
+    <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      {/* Cross pattern background */}
       <div
-        className="absolute inset-0 w-full h-full opacity-15"
+        className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(147, 51, 234, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(147, 51, 234, 0.1) 1px, transparent 1px)",
-          backgroundSize: `${gridSize}px ${gridSize}px`,
-          transform: `translateY(${scrollY * 0.2}px)`,
+          backgroundImage: `url('/cross-bg.svg')`,
+          backgroundSize: "50px 50px",
+          transform: `translateY(${scrollY * 0.6}px)`,
+          opacity: 0.15,
         }}
       />
 
-      {/* Vertical grid lines with different color and scroll speed */}
+      {/* Gradient layers */}
       <div
-        className="absolute inset-0 w-full h-full opacity-10"
+        className="absolute inset-0 w-full h-full bg-gradient-to-b from-purple-900/30 to-transparent"
         style={{
-          backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.15) 1px, transparent 1px)",
-          backgroundSize: `${gridSize * 4}px ${gridSize * 4}px`,
-          transform: `translateY(${scrollY * 0.1}px)`,
-        }}
-      />
-
-      {/* Horizontal grid lines with different color and scroll speed */}
-      <div
-        className="absolute inset-0 w-full h-full opacity-10"
-        style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(6, 182, 212, 0.15) 1px, transparent 1px)",
-          backgroundSize: `${gridSize * 4}px ${gridSize * 4}px`,
           transform: `translateY(${scrollY * 0.3}px)`,
+          opacity: 0.5,
         }}
       />
 
-      {/* Main gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-zinc-900" />
-
-      {/* Radial gradients for a futuristic look */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.1),transparent_35%),radial-gradient(circle_at_70%_70%,rgba(147,51,234,0.1),transparent_35%)]" />
-
-      {/* Animated blurred orbs that move at different rates */}
+      {/* Moving circles */}
       <div
-        className="absolute w-[400px] h-[400px] rounded-full bg-purple-600/5 blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl"
         style={{
-          left: "20%",
-          top: "30%",
-          transform: `translate(${scrollY * -0.1}px, ${Math.sin(scrollY * 0.002) * 50}px)`,
+          transform: `translate(${scrollY * -0.4}px, ${scrollY * 0.2}px)`,
         }}
       />
 
       <div
-        className="absolute w-[300px] h-[300px] rounded-full bg-blue-600/5 blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-purple-600/10 blur-3xl"
         style={{
-          right: "25%",
-          top: "20%",
-          transform: `translate(${scrollY * 0.15}px, ${Math.cos(scrollY * 0.003) * 30}px)`,
+          transform: `translate(${scrollY * 0.4}px, ${scrollY * -0.3}px)`,
+        }}
+      />
+
+      {/* Additional circles for more movement */}
+      <div
+        className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-cyan-600/10 blur-3xl"
+        style={{
+          transform: `translate(${scrollY * -0.5}px, ${scrollY * -0.2}px)`,
         }}
       />
 
       <div
-        className="absolute w-[500px] h-[500px] rounded-full bg-cyan-600/5 blur-3xl"
+        className="absolute bottom-1/3 left-1/2 w-80 h-80 rounded-full bg-green-600/10 blur-3xl"
         style={{
-          left: "40%",
-          bottom: "10%",
-          transform: `translate(${Math.sin(scrollY * 0.001) * 40}px, ${scrollY * -0.05}px)`,
+          transform: `translate(${scrollY * 0.3}px, ${scrollY * 0.4}px)`,
         }}
       />
 
-      {/* Data points - small glowing dots that move at different speeds */}
-      {[...Array(20)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-purple-400"
-          style={{
-            left: `${Math.random() * 90 + 5}%`,
-            top: `${Math.random() * 90 + 5}%`,
-            opacity: 0.2 + Math.random() * 0.3,
-            transform: `translateY(${scrollY * (0.1 + Math.random() * 0.3)}px)`,
-            boxShadow: "0 0 4px 1px rgba(147, 51, 234, 0.5)",
-          }}
-        />
-      ))}
-
-      {[...Array(15)].map((_, i) => (
-        <div
-          key={i + 20}
-          className="absolute w-1 h-1 rounded-full bg-blue-400"
-          style={{
-            left: `${Math.random() * 90 + 5}%`,
-            top: `${Math.random() * 90 + 5}%`,
-            opacity: 0.1 + Math.random() * 0.3,
-            transform: `translateY(${scrollY * (0.15 + Math.random() * 0.2)}px)`,
-            boxShadow: "0 0 4px 1px rgba(59, 130, 246, 0.5)",
-          }}
-        />
-      ))}
-
-      {[...Array(10)].map((_, i) => (
-        <div
-          key={i + 35}
-          className="absolute w-1 h-1 rounded-full bg-cyan-400"
-          style={{
-            left: `${Math.random() * 90 + 5}%`,
-            top: `${Math.random() * 90 + 5}%`,
-            opacity: 0.1 + Math.random() * 0.2,
-            transform: `translateY(${scrollY * (0.2 + Math.random() * 0.15)}px)`,
-            boxShadow: "0 0 4px 1px rgba(6, 182, 212, 0.5)",
-          }}
-        />
-      ))}
-
-      {/* Data streams - animated lines connecting points */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-10"
+      {/* Diagonal gradient */}
+      <div
+        className="absolute inset-0 w-full h-full bg-gradient-to-tr from-blue-900/20 to-transparent"
         style={{
-          transform: `translateY(${scrollY * 0.05}px)`,
+          transform: `translateY(${scrollY * -0.25}px) translateX(${scrollY * 0.25}px)`,
+          opacity: 0.4,
         }}
-      >
-        <line x1="20%" y1="30%" x2="40%" y2="70%" stroke="url(#purpleBlueGradient)" strokeWidth="1" />
-        <line x1="40%" y1="70%" x2="70%" y2="45%" stroke="url(#blueCyanGradient)" strokeWidth="1" />
-        <line x1="70%" y1="45%" x2="30%" y2="20%" stroke="url(#cyanPurpleGradient)" strokeWidth="1" />
+      />
 
-        <defs>
-          <linearGradient id="purpleBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#9333ea" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.3" />
-          </linearGradient>
-          <linearGradient id="blueCyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.3" />
-          </linearGradient>
-          <linearGradient id="cyanPurpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#9333ea" stopOpacity="0.3" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Overlay to blend everything together */}
-      <div className="absolute inset-0 bg-black/10" />
+      {/* Floating elements */}
+      <div
+        className="absolute top-[30%] left-[15%] w-8 h-8 bg-purple-500/30 rounded-full blur-sm"
+        style={{
+          transform: `translateY(${scrollY * -0.7}px)`,
+        }}
+      />
+      <div
+        className="absolute top-[40%] right-[20%] w-6 h-6 bg-blue-500/30 rounded-full blur-sm"
+        style={{
+          transform: `translateY(${scrollY * -0.8}px)`,
+        }}
+      />
+      <div
+        className="absolute top-[60%] left-[30%] w-10 h-10 bg-cyan-500/30 rounded-full blur-sm"
+        style={{
+          transform: `translateY(${scrollY * -0.6}px)`,
+        }}
+      />
+      <div
+        className="absolute top-[70%] right-[35%] w-12 h-12 bg-indigo-500/30 rounded-full blur-sm"
+        style={{
+          transform: `translateY(${scrollY * -0.9}px)`,
+        }}
+      />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight, Calendar, User, BarChart2, Database } from "lucide-react"
 
@@ -10,7 +11,12 @@ import { SiteFooter } from "@/components/site-footer"
 import { useLanguage } from "@/components/language-provider"
 
 export default function BlogPage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Safe translation function with fallbacks
   const safeT = (key: string, fallback: string): string => {
@@ -57,16 +63,26 @@ export default function BlogPage() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
                   Datika{" "}
                   <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                    {t("blog.title")}
+                    {safeT("blog.title", "Blog")}
                   </span>
                 </h1>
-                <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("blog.subtitle")}</p>
+                <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                  {safeT(
+                    "blog.subtitle",
+                    "Insights, trends, and best practices in data analytics and digital advertising.",
+                  )}
+                </p>
               </div>
             </div>
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900">
           <div className="container px-4 md:px-6">
+            {language === "fr" && (
+              <div className="mb-10 p-4 bg-zinc-800 rounded-lg text-center">
+                <p className="text-zinc-300">Contenu disponible en Anglais seulement</p>
+              </div>
+            )}
             <div className="grid gap-10 sm:grid-cols-1 lg:grid-cols-2">
               {blogPosts.map((post) => (
                 <Card key={post.id} className="bg-zinc-800 border-zinc-700 text-white overflow-hidden">
@@ -84,20 +100,16 @@ export default function BlogPage() {
                     <div className="flex items-center gap-4 text-sm text-zinc-400">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
-                        <span>
-                          {t("blog.date")}: {post.date}
-                        </span>
+                        <span>{post.date}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <User className="h-4 w-4" />
-                        <span>
-                          {t("blog.author")}: {post.author}
-                        </span>
+                        <span>{post.author}</span>
                       </div>
                     </div>
                     <Link href={`/blog/${post.id}`}>
                       <Button variant="link" className="text-purple-400 hover:text-purple-300 p-0">
-                        {t("blog.readMore")} <ArrowRight className="ml-2 h-4 w-4" />
+                        {safeT("blog.readMore", "Read More")} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                   </CardFooter>

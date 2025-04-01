@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft, Calendar, User, BarChart2, Database, ArrowRight } from "lucide-react"
 
@@ -105,6 +108,11 @@ const blogPosts = [
 export default function BlogPostPage({ params }: { params: { id: string } }) {
   const postId = Number.parseInt(params.id)
   const post = blogPosts.find((post) => post.id === postId)
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (!post) {
     return (

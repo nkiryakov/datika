@@ -1,9 +1,9 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import {
   ArrowRight,
-  TrendingUp,
   Zap,
   Database,
   BarChartIcon as ChartBar,
@@ -12,6 +12,7 @@ import {
   Layers,
   Target,
   Lightbulb,
+  TrendingUp,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -22,6 +23,22 @@ import { useLanguage } from "@/components/language-provider"
 export default function ServicesPage() {
   const { t } = useLanguage()
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // Safe translation function with fallbacks
+  const safeT = (key: string, fallback: string): string => {
+    try {
+      const translation = t(key)
+      return translation === key ? fallback : translation
+    } catch (error) {
+      console.warn(`Translation error for key: ${key}`, error)
+      return fallback
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -31,11 +48,17 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
+                  {safeT("services.pageTitle", "Our")}{" "}
                   <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                    {t("services.pageTitle")}
+                    {safeT("footer.services", "Services")}
                   </span>
                 </h1>
-                <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.pageSubtitle")}</p>
+                <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                  {safeT(
+                    "services.pageSubtitle",
+                    "Comprehensive data analytics and digital advertising solutions tailored to your business needs.",
+                  )}
+                </p>
               </div>
             </div>
           </div>
@@ -46,35 +69,42 @@ export default function ServicesPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    {t("footer.dataAnalytics")}
+                    {safeT("footer.dataAnalytics", "Data Analytics")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    {t("services.analytics.title")}
+                    {safeT("services.analytics.title", "Turn Raw Data into Actionable Insights")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.analytics.description")}</p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                    {safeT(
+                      "services.analytics.description",
+                      "Our data analytics services help you understand your business performance, customer behavior, and market trends to make informed decisions.",
+                    )}
+                  </p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">{t("services.analytics.bullet1")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.analytics.point1", "Custom dashboard development")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">{t("services.analytics.bullet2")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.analytics.point2", "Predictive analytics and forecasting")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">{t("services.analytics.bullet3")}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Zap className="h-4 w-4 text-purple-500" />
-                    <span className="text-zinc-300">{t("services.analytics.bullet4")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.analytics.point3", "Data integration and ETL processes")}
+                    </span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      {t("cta.getStarted")}
+                      {safeT("cta.getStarted", "Get Started")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -101,35 +131,48 @@ export default function ServicesPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    {t("footer.digitalAdvertising")}
+                    {safeT("footer.digitalAdvertising", "Digital Advertising")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    {t("services.marketing.title")}
+                    {safeT("services.marketing.title", "Data-Driven Campaigns That Convert")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.marketing.description")}</p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                    {safeT(
+                      "services.marketing.description",
+                      "Our digital advertising services leverage data analytics to create targeted campaigns that maximize ROI and drive conversions.",
+                    )}
+                  </p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">{t("services.marketing.bullet1")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.marketing.point1", "Paid search (PPC) management")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">{t("services.marketing.bullet2")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.marketing.point2", "Social media advertising")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">{t("services.marketing.bullet3")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.marketing.point3", "Programmatic display advertising")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-blue-500" />
-                    <span className="text-zinc-300">{t("services.marketing.bullet4")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.marketing.point4", "Conversion rate optimization")}
+                    </span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      {t("cta.getStarted")}
+                      {safeT("cta.getStarted", "Get Started")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -144,35 +187,44 @@ export default function ServicesPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    {t("footer.businessIntelligence")}
+                    {safeT("footer.businessIntelligence", "Business Intelligence")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    {t("services.bi.title")}
+                    {safeT("services.bi.title", "Visualize Your Data for Better Decisions")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.bi.description")}</p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                    {safeT(
+                      "services.bi.description",
+                      "Our BI solutions provide interactive dashboards and reports that make complex data accessible and actionable for your entire organization.",
+                    )}
+                  </p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">{t("services.bi.bullet1")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.bi.point1", "Interactive dashboard development")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">{t("services.bi.bullet2")}</span>
+                    <span className="text-zinc-300">{safeT("services.bi.point2", "Real-time data visualization")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">{t("services.bi.bullet3")}</span>
+                    <span className="text-zinc-300">{safeT("services.bi.point3", "Custom reporting solutions")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-cyan-500" />
-                    <span className="text-zinc-300">{t("services.bi.bullet4")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.bi.point4", "Data storytelling and presentation")}
+                    </span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      {t("cta.getStarted")}
+                      {safeT("cta.getStarted", "Get Started")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -199,35 +251,46 @@ export default function ServicesPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
-                    {t("footer.growthStrategy")}
+                    {safeT("footer.growthStrategy", "Growth Strategy")}
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                    {t("services.growth.title")}
+                    {safeT("services.growth.title", "Scale Your Business with Data-Backed Strategies")}
                   </h2>
-                  <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("services.growth.description")}</p>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                    {safeT(
+                      "services.growth.description",
+                      "We help you identify growth opportunities and develop strategies that leverage your data assets to achieve sustainable business growth.",
+                    )}
+                  </p>
                 </div>
                 <ul className="grid gap-2 py-4">
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">{t("services.growth.bullet1")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.growth.point1", "Market opportunity analysis")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">{t("services.growth.bullet2")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.growth.point2", "Customer segmentation and targeting")}
+                    </span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">{t("services.growth.bullet3")}</span>
+                    <span className="text-zinc-300">{safeT("services.growth.point3", "Competitive intelligence")}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-green-500" />
-                    <span className="text-zinc-300">{t("services.growth.bullet4")}</span>
+                    <span className="text-zinc-300">
+                      {safeT("services.growth.point4", "Growth roadmap development")}
+                    </span>
                   </li>
                 </ul>
                 <div>
                   <Link href="/contact">
                     <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                      {t("cta.getStarted")}
+                      {safeT("cta.getStarted", "Get Started")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -241,16 +304,19 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                  {t("services.transform")}
+                  {safeT("services.transform", "Ready to Transform Your Data?")}
                 </h2>
                 <p className="max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t("services.transformSubtitle")}
+                  {safeT(
+                    "services.transformSubtitle",
+                    "Contact us today to discuss how our services can help your business grow.",
+                  )}
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/contact">
                   <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-                    {t("nav.contact")}
+                    {safeT("nav.contact", "Contact Us")}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
