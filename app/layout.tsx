@@ -6,20 +6,18 @@ import Script from "next/script"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
-import { LanguageAlternateLinks } from "@/components/language-alternate-links"
-import { StructuredData } from "@/components/structured-data"
 
 const inter = Inter({ subsets: ["latin"] })
 
-// Update the metadata with more SEO-friendly properties
+// Define all metadata statically in the layout
 export const metadata: Metadata = {
   title: "Datika - Data Analytics & Digital Advertising Agency",
   description:
     "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
-  icons: [
-    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
-    { rel: "apple-touch-icon", url: "/favicon.svg" },
-  ],
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   robots: {
     index: true,
     follow: true,
@@ -96,11 +94,7 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <LanguageProvider>
-            <LanguageAlternateLinks />
-            <StructuredData />
-            {children}
-          </LanguageProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

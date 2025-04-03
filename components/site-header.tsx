@@ -31,16 +31,60 @@ export function SiteHeader() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6">
-            <Link href="/" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">
+            <Link
+              href="/"
+              onClick={(e) => {
+                // Prevent default navigation
+                e.preventDefault()
+                // Manually navigate after a short delay
+                setTimeout(() => {
+                  window.location.href = "/"
+                }, 10)
+              }}
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+            >
               {safeT("nav.home", "Home")}
             </Link>
-            <Link href="/about" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">
+            <Link
+              href="/about"
+              onClick={(e) => {
+                // Prevent default navigation
+                e.preventDefault()
+                // Manually navigate after a short delay
+                setTimeout(() => {
+                  window.location.href = "/about"
+                }, 10)
+              }}
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+            >
               {safeT("nav.about", "About")}
             </Link>
-            <Link href="/services" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">
+            <Link
+              href="/services"
+              onClick={(e) => {
+                // Prevent default navigation
+                e.preventDefault()
+                // Manually navigate after a short delay
+                setTimeout(() => {
+                  window.location.href = "/services"
+                }, 10)
+              }}
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+            >
               {safeT("nav.services", "Services")}
             </Link>
-            <Link href="/blog" className="text-sm font-medium text-zinc-400 transition-colors hover:text-white">
+            <Link
+              href="/blog"
+              onClick={(e) => {
+                // Prevent default navigation
+                e.preventDefault()
+                // Manually navigate after a short delay
+                setTimeout(() => {
+                  window.location.href = "/blog"
+                }, 10)
+              }}
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+            >
               {safeT("nav.blog", "Blog")}
             </Link>
           </nav>
@@ -63,16 +107,60 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="bg-zinc-900 border-zinc-800">
               <nav className="flex flex-col gap-4 mt-8">
-                <Link href="/" className="text-lg font-medium text-white transition-colors hover:text-zinc-400">
+                <Link
+                  href="/"
+                  onClick={(e) => {
+                    // Prevent default navigation
+                    e.preventDefault()
+                    // Manually navigate after a short delay
+                    setTimeout(() => {
+                      window.location.href = "/"
+                    }, 10)
+                  }}
+                  className="text-lg font-medium text-white transition-colors hover:text-zinc-400"
+                >
                   {safeT("nav.home", "Home")}
                 </Link>
-                <Link href="/about" className="text-lg font-medium text-white transition-colors hover:text-zinc-400">
+                <Link
+                  href="/about"
+                  onClick={(e) => {
+                    // Prevent default navigation
+                    e.preventDefault()
+                    // Manually navigate after a short delay
+                    setTimeout(() => {
+                      window.location.href = "/about"
+                    }, 10)
+                  }}
+                  className="text-lg font-medium text-white transition-colors hover:text-zinc-400"
+                >
                   {safeT("nav.about", "About")}
                 </Link>
-                <Link href="/services" className="text-lg font-medium text-white transition-colors hover:text-zinc-400">
+                <Link
+                  href="/services"
+                  onClick={(e) => {
+                    // Prevent default navigation
+                    e.preventDefault()
+                    // Manually navigate after a short delay
+                    setTimeout(() => {
+                      window.location.href = "/services"
+                    }, 10)
+                  }}
+                  className="text-lg font-medium text-white transition-colors hover:text-zinc-400"
+                >
                   {safeT("nav.services", "Services")}
                 </Link>
-                <Link href="/blog" className="text-lg font-medium text-white transition-colors hover:text-zinc-400">
+                <Link
+                  href="/blog"
+                  onClick={(e) => {
+                    // Prevent default navigation
+                    e.preventDefault()
+                    // Manually navigate after a short delay
+                    setTimeout(() => {
+                      window.location.href = "/blog"
+                    }, 10)
+                  }}
+                  className="text-lg font-medium text-white transition-colors hover:text-zinc-400"
+                >
                   {safeT("nav.blog", "Blog")}
                 </Link>
                 <div className="py-2">
