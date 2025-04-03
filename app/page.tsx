@@ -5,6 +5,7 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { ArrowRight, BarChart2, LineChart, PieChart, TrendingUp } from "lucide-react"
+import Head from "next/head"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,7 +15,7 @@ import { CalendlyButton } from "@/components/calendly-button"
 import { useLanguage } from "@/components/language-provider"
 
 export default function Home() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const heroRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -176,6 +177,25 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <Head>
+        {/* Page-specific metadata */}
+        <meta
+          name="description"
+          content={safeT(
+            "hero.subtitle",
+            "Datika helps businesses harness the power of data analytics and digital advertising to drive growth and make informed decisions.",
+          )}
+        />
+        <meta property="og:title" content="Datika - Data Analytics & Digital Advertising Agency" />
+        <meta
+          property="og:description"
+          content={safeT(
+            "hero.subtitle",
+            "Datika helps businesses harness the power of data analytics and digital advertising to drive growth and make informed decisions.",
+          )}
+        />
+        <meta property="og:url" content={`https://datika.com${language === "fr" ? "/fr" : ""}`} />
+      </Head>
       <SiteHeader />
       <main className="flex-1">
         <section

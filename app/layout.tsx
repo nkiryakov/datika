@@ -6,9 +6,12 @@ import Script from "next/script"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
+import { LanguageAlternateLinks } from "@/components/language-alternate-links"
+import { StructuredData } from "@/components/structured-data"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Update the metadata with more SEO-friendly properties
 export const metadata: Metadata = {
   title: "Datika - Data Analytics & Digital Advertising Agency",
   description:
@@ -16,6 +19,48 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://datika.com",
+    languages: {
+      en: "https://datika.com",
+      fr: "https://datika.com/fr",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://datika.com",
+    title: "Datika - Data Analytics & Digital Advertising Agency",
+    description:
+      "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
+    siteName: "Datika",
+    images: [
+      {
+        url: "https://datika.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Datika - Data Analytics",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Datika - Data Analytics & Digital Advertising Agency",
+    description:
+      "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
+    images: ["https://datika.com/twitter-image.jpg"],
+  },
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -49,9 +94,17 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            <LanguageAlternateLinks />
+            <StructuredData />
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
   )
 }
+
+
+
+import './globals.css'
