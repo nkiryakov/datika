@@ -16,9 +16,10 @@ export const metadata: Metadata = {
   title: "Datika - Data Analytics & Digital Advertising Agency",
   description:
     "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
-  icons: {
-    icon: "/favicon.svg",
-  },
+  icons: [
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+    { rel: "apple-touch-icon", url: "/favicon.svg" },
+  ],
   robots: {
     index: true,
     follow: true,
@@ -46,10 +47,10 @@ export const metadata: Metadata = {
     siteName: "Datika",
     images: [
       {
-        url: "https://datika.com/og-image.jpg",
+        url: "https://datika.com/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Datika - Data Analytics",
+        alt: "Datika - Data Analytics & Digital Advertising",
       },
     ],
   },
@@ -58,8 +59,10 @@ export const metadata: Metadata = {
     title: "Datika - Data Analytics & Digital Advertising Agency",
     description:
       "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
-    images: ["https://datika.com/twitter-image.jpg"],
+    images: ["https://datika.com/twitter-image.svg"],
   },
+  viewport: "width=device-width, initial-scale=1",
+  themeColor: "#000000",
     generator: 'v0.dev'
 }
 
@@ -71,7 +74,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

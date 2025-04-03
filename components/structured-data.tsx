@@ -13,13 +13,18 @@ export function StructuredData() {
       existingScript.remove()
     }
 
-    // Define the structured data directly instead of fetching it
+    // Define the structured data directly
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "Datika",
       url: "https://datika.com",
-      logo: "https://datika.com/logo.png",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://datika.com/favicon.svg",
+        width: "32",
+        height: "32",
+      },
       description:
         language === "fr"
           ? "Datika aide les entreprises à exploiter la puissance de l'analyse de données et de la publicité numérique pour stimuler leur croissance et prendre des décisions éclairées."

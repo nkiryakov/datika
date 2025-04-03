@@ -290,15 +290,29 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en")
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language") as Language
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "fr")) {
-      setLanguageState(savedLanguage)
+    // Check if URL contains /fr/ to set initial language
+    const path = window.location.pathname
+    if (path.startsWith("/fr")) {
+      setLanguageState("fr")
+    } else {
+      const savedLanguage = localStorage.getItem("language") as Language
+      if (savedLanguage && (savedLanguage === "en" || savedLanguage === "fr")) {
+        setLanguageState(savedLanguage)
+      }
     }
   }, [])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem("language", lang)
+
+    // Update URL to reflect language change
+    const currentPath = window.location.pathname
+    if (lang === "fr" && !currentPath.startsWith("/fr")) {
+      window.history.pushState({}, "", `/fr${currentPath}`)
+    } else if (lang === "en" && currentPath.startsWith("/fr")) {
+      window.history.pushState({}, "", currentPath.substring(3))
+    }
   }
 
   const t = (key: string): string => {
