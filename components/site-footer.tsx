@@ -5,7 +5,7 @@ import { useLanguage } from "@/components/language-provider"
 import { LanguageToggle } from "@/components/language-toggle"
 
 export function SiteFooter() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   // Safe translation function with fallbacks
   const safeT = (key: string, fallback: string): string => {
@@ -73,6 +73,19 @@ export function SiteFooter() {
                 <li>
                   <Link href="/contact" className="text-zinc-400 hover:text-white">
                     {safeT("footer.contact", "Contact")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={language === "fr" ? "/fr/terms" : "/terms"} className="text-zinc-400 hover:text-white">
+                    {language === "fr" ? "Conditions d'utilisation" : "Terms of Service"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={language === "fr" ? "/fr/privacy" : "/privacy"}
+                    className="text-zinc-400 hover:text-white"
+                  >
+                    {language === "fr" ? "Politique de confidentialité" : "Privacy Policy"}
                   </Link>
                 </li>
               </ul>

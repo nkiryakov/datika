@@ -19,6 +19,8 @@ const translations = {
     "nav.blog": "Blog",
     "nav.contact": "Contact Us",
     "nav.language": "Français",
+    "nav.terms": "Terms of Service",
+    "nav.privacy": "Privacy Policy",
 
     // Homepage
     "hero.title": "Transform Your Data into Actionable Insights",
@@ -63,6 +65,8 @@ const translations = {
     "footer.blog": "Blog",
     "footer.contact": "Contact",
     "footer.copyright": "All rights reserved.",
+    "footer.terms": "Terms of Service",
+    "footer.privacy": "Privacy Policy",
 
     // Contact
     "contact.title": "Get in Touch",
@@ -155,6 +159,8 @@ const translations = {
     "nav.blog": "Blogue",
     "nav.contact": "Contactez-nous",
     "nav.language": "English",
+    "nav.terms": "Conditions d'utilisation",
+    "nav.privacy": "Politique de confidentialité",
 
     // Homepage
     "hero.title": "Transformez Vos Données et Prenez Action",
@@ -199,6 +205,8 @@ const translations = {
     "footer.blog": "Blogue",
     "footer.contact": "Contact",
     "footer.copyright": "Tous droits réservés.",
+    "footer.terms": "Conditions d'utilisation",
+    "footer.privacy": "Politique de confidentialité",
 
     // Contact
     "contact.title": "Contactez-nous",

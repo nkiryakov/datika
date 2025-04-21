@@ -56,6 +56,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+  // Updated with the actual Facebook App ID
+  other: {
+    "fb:app_id": "1615952449062843",
+  },
   twitter: {
     card: "summary_large_image",
     images: ["/twitter-image.png"],
