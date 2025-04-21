@@ -381,6 +381,54 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 relative">
+          <div className="container px-4 md:px-6 relative z-10">
+            <div className="grid gap-6 md:grid-cols-[1fr_1fr] lg:gap-12">
+              <div className="flex items-center justify-center order-first">
+                <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] rounded-xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 to-blue-900/30 z-10"></div>
+                  <div className="absolute inset-0 bg-black/20 z-10"></div>
+                  <div
+                    className="absolute inset-0 z-0 opacity-20"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  ></div>
+                  <img
+                    src="/montreal-sunset-royal.png"
+                    alt="Montreal skyline"
+                    className="object-cover w-full h-full rounded-xl z-0 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-zinc-900 to-transparent z-10"></div>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm text-zinc-300">
+                    {language === "fr" ? "Fièrement Québécois" : "Proudly Quebec-Based"}
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+                    {language === "fr" ? "Basée à Montréal" : "Rooted in Montreal"}
+                  </h2>
+                  <p className="max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    {language === "fr"
+                      ? "Datika est une entreprise fièrement québécoise basée à Montréal. Notre équipe locale comprend les défis uniques des entreprises québécoises et s'engage à fournir des solutions d'analyse de données et de publicité numérique adaptées à notre marché distinct."
+                      : "Datika is a proudly Quebec-owned and operated business based in Montreal. Our local team understands the unique challenges of Quebec businesses and is committed to providing data analytics and digital advertising solutions tailored to our distinct market."}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Link href="/about">
+                    <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800">
+                      {language === "fr" ? "En savoir plus sur nous" : "Learn more about us"}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>
