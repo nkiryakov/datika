@@ -21,4 +21,3 @@ export function CalendlyButton({ text, showArrow = true, className = "" }: Calen
     </a>
   )
 }
-

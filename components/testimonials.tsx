@@ -52,10 +52,11 @@ export function Testimonials() {
               <CardFooter className="flex items-center gap-4">
                 <div className="relative h-10 w-10 overflow-hidden rounded-full">
                   <Image
-                    src={testimonial.image || "/placeholder.svg"}
+                    src={testimonial.image || "/placeholder.svg?height=80&width=80"}
                     alt={testimonial.author}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div>
@@ -70,4 +71,3 @@ export function Testimonials() {
     </section>
   )
 }
-

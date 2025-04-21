@@ -1,6 +1,6 @@
 "use client"
 
-import Head from "next/head"
+import Script from "next/script"
 import { useLanguage } from "@/components/language-provider"
 
 export function StructuredData() {
@@ -32,19 +32,16 @@ export function StructuredData() {
       "@type": "ContactPoint",
       telephone: "+1-514-746-1558",
       contactType: "customer service",
-      email: "nikola.kiryakov@gmail.com",
+      email: "info@datika.ca",
     },
     sameAs: ["https://www.linkedin.com/company/datika", "https://twitter.com/datika"],
   }
 
   return (
-    <Head>
-      <script
-        key="structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-    </Head>
+    <Script
+      id="structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
   )
 }
-

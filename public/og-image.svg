@@ -1,15 +1,15 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <!-- Background with gradient -->
-  <rect width="1200" height="600" fill="#000000" />
+  <rect width="1200" height="630" fill="#000000" />
   
   <!-- Gradient background -->
-  <rect width="1200" height="600" fill="url(#bg-gradient)" />
+  <rect width="1200" height="630" fill="url(#bg-gradient)" />
   
   <!-- Subtle grid pattern -->
-  <rect width="1200" height="600" fill="url(#grid-pattern)" opacity="0.15" />
+  <rect width="1200" height="630" fill="url(#grid-pattern)" opacity="0.15" />
   
   <!-- Logo and text container -->
-  <g transform="translate(300, 200)">
+  <g transform="translate(300, 230)">
     <!-- Datika logo -->
     <path d="M0 0H160C204.183 0 240 35.8172 240 80C240 124.183 204.183 160 160 160H0V0Z" fill="url(#logo-gradient)"/>
     <path d="M160 40H120V120H160C182.091 120 200 102.091 200 80C200 57.9086 182.091 40 160 40Z" fill="#000000"/>
@@ -18,13 +18,13 @@
     <text x="300" y="100" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white">DATIKA</text>
     
     <!-- Tagline -->
-    <text x="300" y="160" font-family="Arial, sans-serif" font-size="32" fill="#a0a0a0">Transform Your Data into Insights</text>
+    <text x="300" y="160" font-family="Arial, sans-serif" font-size="32" fill="#a0a0a0">Data Analytics & Digital Advertising</text>
   </g>
   
   <!-- Definitions -->
   <defs>
     <!-- Background gradient -->
-    <linearGradient id="bg-gradient" x1="0" y1="0" x2="1200" y2="600" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#0f0f0f" />
       <stop offset="100%" stop-color="#121212" />
     </linearGradient>
@@ -42,4 +42,3 @@
     </pattern>
   </defs>
 </svg>
-

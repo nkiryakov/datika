@@ -9,14 +9,21 @@ import { LanguageProvider } from "@/components/language-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
-// Define all metadata statically in the layout
+// Define base metadata that will be extended by individual pages
 export const metadata: Metadata = {
-  title: "Datika - Data Analytics & Digital Advertising Agency",
+  title: {
+    template: "%s - Datika",
+    default: "Data Analytics & Digital Advertising Agency - Datika",
+  },
   description:
     "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: { url: "/favicon.ico" },
   },
   robots: {
     index: true,
@@ -39,13 +46,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://datika.com",
-    title: "Datika - Data Analytics & Digital Advertising Agency",
-    description:
-      "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
     siteName: "Datika",
     images: [
       {
-        url: "https://datika.com/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Datika - Data Analytics & Digital Advertising",
@@ -54,10 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Datika - Data Analytics & Digital Advertising Agency",
-    description:
-      "Transform your data into actionable insights with Datika's comprehensive analytics and digital advertising solutions.",
-    images: ["https://datika.com/twitter-image.svg"],
+    images: ["/twitter-image.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#000000",
@@ -100,7 +101,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'

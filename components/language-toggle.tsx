@@ -45,4 +45,3 @@ export function LanguageToggle({ variant = "default" }: { variant?: "default" | 
     </Button>
   )
 }
-

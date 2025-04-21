@@ -1,19 +1,19 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 
 export function ParallaxBackground() {
   const [scrollY, setScrollY] = useState(0)
   const requestRef = useRef<number>()
   const previousTimeRef = useRef<number>()
 
-  const animate = (time: number) => {
+  const animate = useCallback((time: number) => {
     if (previousTimeRef.current !== undefined) {
       setScrollY(window.scrollY)
     }
     previousTimeRef.current = time
     requestRef.current = requestAnimationFrame(animate)
-  }
+  }, [])
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate)
@@ -22,7 +22,7 @@ export function ParallaxBackground() {
         cancelAnimationFrame(requestRef.current)
       }
     }
-  }, [])
+  }, [animate])
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -113,4 +113,3 @@ export function ParallaxBackground() {
     </div>
   )
 }
-
