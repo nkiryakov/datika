@@ -16,9 +16,9 @@ export function FaviconGenerator() {
     canvas.width = 180
     canvas.height = 180
 
-    // Draw background
+    // Draw background with more rounded corners
     ctx.fillStyle = "#000000"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    roundedRect(ctx, 0, 0, canvas.width, canvas.height, canvas.width * 0.25) // 25% of width for significant rounding
 
     // Calculate logo dimensions
     const padding = 20
@@ -67,9 +67,9 @@ export function FaviconGenerator() {
     canvas.width = 32
     canvas.height = 32
 
-    // Draw background
+    // Draw background with more rounded corners
     ctx.fillStyle = "#000000"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    roundedRect(ctx, 0, 0, canvas.width, canvas.height, canvas.width * 0.25) // 25% of width for significant rounding
 
     // Calculate logo dimensions
     const faviconPadding = 2
@@ -145,9 +145,9 @@ export function FaviconGenerator() {
     canvas.width = 16
     canvas.height = 16
 
-    // Draw background
+    // Draw background with more rounded corners
     ctx.fillStyle = "#000000"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    roundedRect(ctx, 0, 0, canvas.width, canvas.height, canvas.width * 0.25) // 25% of width for significant rounding
 
     // Calculate logo dimensions
     const smallFaviconPadding = 1
@@ -192,6 +192,29 @@ export function FaviconGenerator() {
     smallFaviconLink.click()
     document.body.removeChild(smallFaviconLink)
   }, [])
+
+  // Helper function to draw rounded rectangles
+  function roundedRect(
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    radius: number,
+  ) {
+    ctx.beginPath()
+    ctx.moveTo(x + radius, y)
+    ctx.lineTo(x + width - radius, y)
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius)
+    ctx.lineTo(x + width, y + height - radius)
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height)
+    ctx.lineTo(x + radius, y + height)
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius)
+    ctx.lineTo(x, y + radius)
+    ctx.quadraticCurveTo(x, y, x + radius, y)
+    ctx.closePath()
+    ctx.fill()
+  }
 
   return (
     <div className="p-8">

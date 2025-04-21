@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://datika.com"
+  const baseUrl = "https://datika.ca"
 
   // Define all routes in English
   const routes = ["", "/about", "/services", "/blog", "/contact", "/blog/1", "/blog/2"]

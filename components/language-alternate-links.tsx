@@ -9,7 +9,7 @@ export function LanguageAlternateLinks() {
   const { language } = useLanguage()
 
   // Base URL for the site
-  const baseUrl = "https://datika.com"
+  const baseUrl = "https://datika.ca"
 
   // Calculate URLs for alternate language versions
   const enUrl = language === "en" ? `${baseUrl}${pathname}` : `${baseUrl}${pathname.replace(/^\/fr/, "")}`

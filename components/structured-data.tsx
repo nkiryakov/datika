@@ -11,10 +11,10 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Datika",
-    url: "https://datika.com",
+    url: "https://datika.ca",
     logo: {
       "@type": "ImageObject",
-      url: "https://datika.com/favicon.svg",
+      url: "https://datika.ca/favicon.svg",
       width: "32",
       height: "32",
     },

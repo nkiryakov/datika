@@ -8,7 +8,7 @@ import type { Metadata } from "next"
  * @returns Metadata object with Open Graph properties
  */
 export function generateOpenGraphMetadata(path: string, title: string, description: string): Metadata {
-  const baseUrl = "https://datika.com"
+  const baseUrl = "https://datika.ca"
   const url = `${baseUrl}${path}`
 
   return {

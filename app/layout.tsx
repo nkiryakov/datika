@@ -36,16 +36,16 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://datika.com",
+    canonical: "https://datika.ca",
     languages: {
-      en: "https://datika.com",
-      fr: "https://datika.com/fr",
+      en: "https://datika.ca",
+      fr: "https://datika.ca/fr",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://datika.com",
+    url: "https://datika.ca",
     siteName: "Datika",
     images: [
       {
