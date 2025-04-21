@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import ClientPage from "@/components/pages/home-page"
+import HomePage from "@/components/pages/home-page"
 
 export const metadata: Metadata = {
   title: "Transform Your Data into Actionable Insights",
@@ -27,5 +27,5 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  return <ClientPage />
+  return <HomePage />
 }
